@@ -1,0 +1,15 @@
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.csproj.AssemblyReference.cache
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.GeneratedMSBuildEditorConfig.editorconfig
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.AssemblyInfoInputs.cache
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.AssemblyInfo.cs
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.csproj.CoreCompileInputs.cache
+/home/aga/VisualStudio_Project/reptile/bin/Debug/net7.0/reptile
+/home/aga/VisualStudio_Project/reptile/bin/Debug/net7.0/reptile.deps.json
+/home/aga/VisualStudio_Project/reptile/bin/Debug/net7.0/reptile.runtimeconfig.json
+/home/aga/VisualStudio_Project/reptile/bin/Debug/net7.0/reptile.dll
+/home/aga/VisualStudio_Project/reptile/bin/Debug/net7.0/reptile.pdb
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.dll
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/refint/reptile.dll
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.pdb
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/reptile.genruntimeconfig.cache
+/home/aga/VisualStudio_Project/reptile/obj/Debug/net7.0/ref/reptile.dll
