@@ -50,6 +50,10 @@ static void PrintMatrix(int[,] matrix)
 
 }
 
+
+
+//__________________________________________________________
+//
 // 1. Реализовать сортировку выбором на одномерном массиве 
 // целых чисел. Сортировка выбором - найти максимум, 
 // установить последним, в следующий раз найти максимум 
@@ -57,12 +61,9 @@ static void PrintMatrix(int[,] matrix)
 // Пример - массив [6,2,0,9,7,1,3] должен выводится как [0,1,2,3,6,7,9]. 
 // Подумать, как реализовать сортировку по убыванию  [9,7,6,3,2,1,0]
 
-// int[] examArr = new int[] { 6, 2, 0, 9, 7, 1, 3 };
-// int[] rndArr = CreateRandomArray(7, -10, 10);
 
 static int[] SortArrayUp(int[] arr)
 {
-    //Объявление переменных
     int arrLength = arr.Length;
     int indexMaxNumber = 0;
 
@@ -82,57 +83,53 @@ static int[] SortArrayUp(int[] arr)
 
         indexMaxNumber = 0;
     }
-    //Вывод в консоль отсортированного массива
-    // Console.WriteLine("\nСортировка по возрастанию:");
-    // PrintArray(arr);
-
     return arr;
 }
 
-// static void SortArrayDown(int[] arr)
-// {
-//     //Объявление переменных
-//     int arrLength = arr.Length;
-//     int[] sortDown = arr;
-//     int indexMinNumber = 0;
+static int[] SortArrayDown(int[] arr)
+{
+    int arrLength = arr.Length;
+    int[] sortDown = arr;
+    int indexMinNumber = 0;
 
-//     //Сортировка
-//     for (int i = 1; i < arrLength; i++)
-//     {
-//         for (int j = 1; j < arrLength + 1 - i; j++)
-//         {
-//             if (sortDown[j] < sortDown[indexMinNumber])
-//             {
-//                 indexMinNumber = j;
-//             }
-//         }
-//         int tmpValue = sortDown[arrLength - i];
-//         sortDown[arrLength - i] = sortDown[indexMinNumber];
-//         sortDown[indexMinNumber] = tmpValue;
+    //Сортировка
+    for (int i = 1; i < arrLength; i++)
+    {
+        for (int j = 1; j < arrLength + 1 - i; j++)
+        {
+            if (sortDown[j] < sortDown[indexMinNumber])
+            {
+                indexMinNumber = j;
+            }
+        }
+        int tmpValue = sortDown[arrLength - i];
+        sortDown[arrLength - i] = sortDown[indexMinNumber];
+        sortDown[indexMinNumber] = tmpValue;
 
-//         indexMinNumber = 0;
-//     }
+        indexMinNumber = 0;
+    }
+    return sortDown;
+}
 
-//     //Вывод в консоль отсортированного массива
-//     Console.WriteLine("\nСортировка по убыванию:");
-//     PrintArray(sortDown);
+int[] examArr = new int[] { 6, 2, 0, 9, 7, 1, 3 };
+int[] rndArr = CreateRandomArray(7, -10, 10);
 
-//     // return sortDown;
-// }
-
-
-
-// Console.WriteLine("Исходный массив:");
-// PrintArray(examArr);
-// SortArrayUp(examArr);
-// SortArrayDown(examArr);
+Console.WriteLine("ОДНОМЕРНЫЙ МАССИВ, СОРТИРОВКА ВЫБОРОМ");
+Console.WriteLine("Исходный массив:");
+PrintArray(examArr);
+Console.WriteLine("\nСортировка по увеличению:");
+PrintArray(SortArrayUp(examArr));
+Console.WriteLine("\nСортировка по убыванию:");
+PrintArray(SortArrayDown(examArr));
 
 // PrintArray(rndArr);
-// SortArrayUp(rndArr);
-// SortArrayDown(rndArr);
+// Console.WriteLine(PrintArray(SortArrayUp(rndArr)));
+// Console.WriteLine(PrintArray(SortArrayDown(rndArr)));
 
 
 
+//__________________________________________________________
+//
 // 2. Реализовать сортировку выбором на двухмерном массиве построчно - 
 // отсортировать только строки
 // Например:
@@ -173,13 +170,11 @@ static void SortMatrixRow(int[,] arr)
     PrintMatrix(arr);
 }
 
-
-
 int[,] examMatrix = new int[,] { { 2, 8, 0, 1 }, { 3, 8, 2, 5 }, { 9, 4, 5, 7 } };
 int[,] rndMatrix = CreateRandomMatrix(3, 4, 0, 9);
 
-
-Console.WriteLine("Исходная матрица:");
+Console.WriteLine("\nДВУМЕРНЫЙ МАССИВ, ПОСТРОЧНАЯ СОРТИРОВКА");
+Console.WriteLine("Исходный массив:");
 PrintMatrix(examMatrix);
 SortMatrixRow(examMatrix);
 
@@ -188,7 +183,8 @@ SortMatrixRow(examMatrix);
 
 
 
-
+//__________________________________________________________
+//
 // 3. Реализовать сортировку выбором на двухмерном массиве - 
 // отсортировать все элементы
 // 2 8 0 1
@@ -199,3 +195,43 @@ SortMatrixRow(examMatrix);
 // 3 4 5 5
 // 7 8 8 9
 
+static void SortMatrixAll(int[,] arr)
+{
+    int rows = arr.GetLength(0);
+    int columns = arr.GetLength(1);
+
+    //Пустой массив
+    int[] row = new int[arr.Length];
+
+    for (int i = 0; i < rows; i++)
+    {
+        //Извлечение строки 
+        for (int j = 0; j < columns; j++)
+        {
+            row[i * columns + j] = arr[i, j];
+        }
+    }
+
+    //Сортировка строки
+    row = SortArrayUp(row);
+
+    //Замена отсортированным значением
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            arr[i, j] = row[i * columns + j];
+        }
+    }
+    //Вывод в консоль отсортированного массива
+    Console.WriteLine("\nСортировка всех значений матрицы по возрастанию:");
+    PrintMatrix(arr);
+}
+
+Console.WriteLine("\nДВУМЕРНЫЙ МАССИВ, СОРТИРОВКА ВСЕХ ЭЛЕМЕНТОВ");
+Console.WriteLine("Исходный массив:");
+PrintMatrix(examMatrix);
+SortMatrixAll(examMatrix);
+
+// PrintMatrix(rndMatrix);
+// SortMatrixAll(rndMatrix);
